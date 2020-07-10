@@ -1,0 +1,23 @@
+<div class="col_1" *ngFor="let plan of insurancePlanDetails">
+  <div class="row value-item-wrapper align-items-center">
+    <div class="col-12 col-sm-12 col-md-4">
+      <div class="value-wrapper">
+        <span class="value">${{plan.PlanAmount}}</span>
+        <span class="value-summary">per {{statusText}} for {{noOfDevices}} {{deviceText}}</span>
+      </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-8">
+      <div class="detail-wrapper">
+        <span class="d-block detail-title font-weight-bold">{{plan.PolicyType}} Plan</span>
+        <div class="d-block detail-summary">
+          <div class="txt" *ngIf="plan.PolicyType == 'Complete'" [innerHTML]="completeDescription"></div>
+          <div class="txt" *ngIf="plan.PolicyType == 'Value'" [innerHTML]="valueDescription"></div>
+        </div>
+        <button mat-button class="btn btn-primary btn-custom mb-3 font-weight-bold btn-small btn-yellow"
+                (click)="redirectToPlansInCBcom(status,plan.PolicyType,plan.PlanId)">
+          Purchase plan
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

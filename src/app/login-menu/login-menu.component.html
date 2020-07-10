@@ -1,0 +1,17 @@
+<ul class="navbar-nav" *ngIf="userDetails">
+  <li class="nav-item">
+    <a class="nav-link text-dark" [routerLink]='["/home"]' title="Manage">Hello {{ userDetails.fullName }}</a>
+  </li>
+  <li class="nav-item" >
+    <a class="nav-link text-dark"  (click)="onLogout()">Logout</a>
+  </li>
+</ul>
+<ul class="navbar-nav" *ngIf="!(userDetails)">
+  <li class="nav-item">
+    <a class="nav-link text-dark" [routerLink]='["/user/registration"]'>Register</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-dark" [routerLink]='["/user/login"]'>Login</a>
+  </li>
+</ul>
+
