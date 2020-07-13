@@ -17,29 +17,39 @@ export class LoginComponent implements OnInit {
   constructor(private service: UserService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
-    if (localStorage.getItem('token') != null)
+    if (sessionStorage.getItem('token') != null)
       this.router.navigateByUrl('/home');
   }
 
   onSubmit(form: NgForm) {
     this.service.login(form.value).subscribe(
       (res: any) => {
-        localStorage.setItem('token', res.token);
-        localStorage.setItem('UserName', res.userName);
-        localStorage.setItem('loginStatus', '1');     
-        sessionStorage.setItem('token', res.token);
-        sessionStorage.setItem('UserName', res.userName);
-        sessionStorage.setItem('loginStatus', '1');
-        this.service.getUserName();        
-        location.reload();
-        this.router.navigateByUrl('/home');
+        if (res.message) {
+          
+          this.toastr.error('Incorrect username or password.', 'Authentication failed.');
+          form.reset();
+          
+        }
+
+        else if ((res.token != null && res.token != "undefined") && (res.userName != null && res.userName != "undefined"))
+        {         
+          sessionStorage.setItem('token', res.token);
+          sessionStorage.setItem('UserName', res.userName);
+          sessionStorage.setItem('loginStatus', '1');
+          this.service.getUserName();
+          this.toastr.success('Logged in Successfully.');   
+          location.reload();
+          this.router.navigateByUrl('/home');
+        }
+        
       },
       err => {
         if (err.status == 400)
           this.toastr.error('Incorrect username or password.', 'Authentication failed.');
         else
           this.toastr.error('Incorrect username or password.', 'Authentication failed.');
-          console.log(err);
+        console.log(err);
+        form.reset();
       }
     );
   }

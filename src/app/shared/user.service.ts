@@ -27,7 +27,7 @@ export class UserService {
   }
   readonly BaseURI = 'http://localhost:31258/api';
   private loginStatus = new BehaviorSubject<boolean>(this.checkLoginStatus());
-  private UserName = new BehaviorSubject<string>(localStorage.getItem('UserName'));
+  private UserName = new BehaviorSubject<string>(sessionStorage.getItem('UserName'));
 
 
   formModel = this.fb.group({
@@ -73,26 +73,25 @@ export class UserService {
   }
 
   onLogout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('UserName');
-    localStorage.setItem('loginStatus', '0');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('UserName');
+    sessionStorage.setItem('loginStatus', '0');
     location.reload();
-    this.router.navigate(['/user/login']);
-   
+    this.router.navigate(['/user/login']);   
 
   }
 
   checkLoginStatus(): boolean {
 
-    var loginCookie = localStorage.getItem("loginStatus");
+    var loginCookie = sessionStorage.getItem("loginStatus");
 
     if (loginCookie == "1") {
-      if (localStorage.getItem('token') === null || localStorage.getItem('token') === undefined) {
+      if (sessionStorage.getItem('token') === null || sessionStorage.getItem('token') === undefined) {
         return false;
       }
 
       // Get and Decode the Token
-      const token = localStorage.getItem('token');
+      const token = sessionStorage.getItem('token');
       const decoded = jwt_decode(token);
       // Check if the cookie is valid
 
@@ -130,7 +129,7 @@ export class UserService {
   }
 
   getUserName() {
-    this.UserName.next(localStorage.getItem('UserName'));
+    this.UserName.next(sessionStorage.getItem('UserName'));
   
   }
 }
