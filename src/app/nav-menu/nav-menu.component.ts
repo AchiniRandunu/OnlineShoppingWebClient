@@ -9,11 +9,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent implements OnInit {
-
-  
-  //isExpanded = false;
-
-
   
   constructor(private userService: UserService, private router: Router) {
 
@@ -27,15 +22,6 @@ export class NavMenuComponent implements OnInit {
     this.UserName$ = this.userService.currentUserName;
 
   }
-
-
-  //collapse() {
-  //  this.isExpanded = false;
-  //}
-
-  //toggle() {
-  //  this.isExpanded = !this.isExpanded;
-  //}
 
  
   onLogout() {

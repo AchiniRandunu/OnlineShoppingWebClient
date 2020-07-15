@@ -13,7 +13,6 @@ import { UserComponent } from './user/user.component';
 import { UserService } from './shared/user.service';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { LoginMenuComponent } from './login-menu/login-menu.component';
 import { ProductComponent } from './product/product.component';
 
 @NgModule({
@@ -23,8 +22,7 @@ import { ProductComponent } from './product/product.component';
     RegistrationComponent,
     HomeComponent,
     UserComponent,
-    NavMenuComponent,
-    LoginMenuComponent,
+    NavMenuComponent,  
     ProductComponent
   ],
   imports: [
