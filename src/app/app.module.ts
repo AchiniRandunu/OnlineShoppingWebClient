@@ -6,14 +6,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './user/login/login.component';
-import { RegistrationComponent } from './user/registration/registration.component';
-import { HomeComponent } from './home/home.component';
-import { UserComponent } from './user/user.component';
-import { UserService } from './shared/user.service';
-import { AuthInterceptor } from './auth/auth.interceptor';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { ProductComponent } from './product/product.component';
+import { LoginComponent } from '../app/components/user/login/login.component';
+import { RegistrationComponent } from '../app/components/user/registration/registration.component';
+import { HomeComponent } from '../app/components/home/home.component';
+import { UserComponent } from '../app/components/user/user.component';
+import { UserService } from '../app/shared/services/user.service';
+import { AuthInterceptor } from '../app/components/auth/auth.interceptor';
+import { NavMenuComponent } from '../app/components/nav-menu/nav-menu.component';
+import { ProductComponent } from '../app/components/product/product.component';
+import { ProductDetailsComponent } from './components/product/product-details/product-details.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { ProductComponent } from './product/product.component';
     HomeComponent,
     UserComponent,
     NavMenuComponent,  
-    ProductComponent
+    ProductComponent, ProductDetailsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

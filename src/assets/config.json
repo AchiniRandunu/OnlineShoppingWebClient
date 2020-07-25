@@ -1,0 +1,7 @@
+{
+  "LoginUrl": "/ApplicationUser/Login",
+  "RegistrationUrl": "/ApplicationUser/Register",
+  "GetProductUrl": "/Products/GetAllActiveProducts",
+  "GetProductByIDUrl": "/Products/GetProductById"
+
+}

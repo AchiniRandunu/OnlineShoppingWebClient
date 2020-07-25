@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\home",
-    "\\src\\app\\login-menu",
-    "\\src\\app\\nav-menu",
+    "\\src\\app\\components",
+    "\\src\\app\\components\\nav-menu",
+    "\\src\\app\\components\\product",
+    "\\src\\app\\components\\user",
     "\\src\\app\\shared",
-    "\\src\\app\\user",
-    "\\src\\assets",
-    "\\src\\assets\\img"
+    "\\src\\app\\shared\\services",
+    "\\src\\app\\shared\\services\\cache"
   ],
-  "SelectedNode": "\\src\\app\\shared\\user.service.ts",
+  "SelectedNode": "\\src\\app\\services\\online-shopping-management.service.ts",
   "PreviewInSolutionExplorer": false
 }

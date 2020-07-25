@@ -1,0 +1,23 @@
+<div  *ngIf="product">
+  <div class="row value-item-wrapper align-items-center">
+    <div class="col-12 col-sm-12 col-md-4">
+      <div class="value-wrapper">
+        <!--<span class="value">{{product.productName}}</span>-->
+        <img src="../../../../assets/img/{{product.imageName}}" width="150">
+      </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-8">
+      <div class="detail-wrapper">
+        <span class="d-block detail-title font-weight-bold">{{product.productName}}</span>
+        <span class="d-block detail-title font-weight-bold">Price : ${{product.price}}</span>
+        <div class="d-block detail-summary">
+          <div class="txt">{{product.description}}</div>
+        </div>
+        <button mat-button class="btn btn-primary btn-custom mb-3 font-weight-bold btn-small btn-yellow"
+                (click)="redirectToPlansInCBcom(status,plan.PolicyType,plan.PlanId)">
+          Add To Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
