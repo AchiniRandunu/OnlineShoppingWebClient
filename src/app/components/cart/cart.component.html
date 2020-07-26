@@ -9,7 +9,7 @@
     <th>Image</th>
     <th>Price</th>
     <th>Quantity</th>
-    <th>Update Quantity</th>
+    <!--<th>Update Quantity</th>-->
     <th>Sub Total</th>
     <th>Remove</th>
 
@@ -22,10 +22,16 @@
       <img src="../../../../assets/img/{{item.product.imageName}}" width="50">
     </td>
     <td>{{item.product.price}}</td>
-    <td>{{item.quantity}}</td>
     <td>
-      <a (click)="add(item.product.productID)">+-</a>
+      <i class="fa fa-caret-square-o-up" aria-hidden="true" (click)="add(item.product.productID)"></i>
+      {{item.quantity}}
+      <i class="fa fa-caret-square-o-down" aria-hidden="true"></i>
     </td>
+    <!--<td>
+      <a (click)="add(item.product.productID)">+-</a>
+      <i class="fa fa-caret-square-o-up" aria-hidden="true"></i>
+      <i class="fa fa-caret-square-o-down" aria-hidden="true"></i>
+    </td>-->
     <td>{{item.product.price * item.quantity}}</td>
     <td>
       <a (click)="remove(item.product.productID)">X</a>
@@ -37,13 +43,13 @@
   </tr>
 </table>
 
-<div *ngIf="items">
+<div class="row justify-content-end" *ngIf="items">
   <div>
     <button mat-button class="btn btn-primary" width="100" padding="10px">
       Checkout
     </button>
   </div>
-  <div>
+  <div class="col-sm-1">
     <button mat-button class="btn btn-primary" width="100">
       Cancel
     </button>
