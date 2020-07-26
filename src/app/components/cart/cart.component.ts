@@ -80,13 +80,16 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
    
-    this.activatedRoute.params.subscribe(params => {
-      var id = params['id'];
-      if (id) {
+    //this.activatedRoute.params.subscribe(params => {
+     // var id = params['id'];
+     // if (id) {
         //this.doSearch(id);
 
-        var d = this.getProductDetails(id).then();
-
+    //var d = this.getProductDetails(id).then();
+    if (localStorage.getItem('cart') != null) {
+      this.loadCart();
+    }
+        this.getProductDetailsByID();
         //console.log(d);
         //var item: Item = {
 
@@ -123,8 +126,8 @@ export class CartComponent implements OnInit {
         //} else {
         //  this.loadCart();
         //}
-      }
-    });
+      //}
+    //});
   }
 
 
@@ -137,38 +140,40 @@ export class CartComponent implements OnInit {
    // console.log(this.product);
 
     console.log(this.product);
-    var item: Item = {
 
-      product: this.product,
-      quantity: 1
-    };
+    this.setProducts(id);
+    //var item: Item = {
+
+    //  product: this.product,
+    //  quantity: 1
+    //};
 
 
-    if (localStorage.getItem('cart') == null) {
-      let cart: any = [];
-      cart.push(JSON.stringify(item));
-      localStorage.setItem('cart', JSON.stringify(cart));
-    } else {
-      let cart: any = JSON.parse(localStorage.getItem('cart'));
-      let index: number = -1;
-      for (var i = 0; i < cart.length; i++) {
-        let item: Item = JSON.parse(cart[i]);
-        if (item.product.productID == id) {
-          index = i;
-          break;
-        }
-      }
-      if (index == -1) {
-        cart.push(JSON.stringify(item));
-        localStorage.setItem('cart', JSON.stringify(cart));
-      } else {
-        let item: Item = JSON.parse(cart[index]);
-        item.quantity += 1;
-        cart[index] = JSON.stringify(item);
-        localStorage.setItem("cart", JSON.stringify(cart));
-      }
-    }
-    this.loadCart();
+    //if (localStorage.getItem('cart') == null) {
+    //  let cart: any = [];
+    //  cart.push(JSON.stringify(item));
+    //  localStorage.setItem('cart', JSON.stringify(cart));
+    //} else {
+    //  let cart: any = JSON.parse(localStorage.getItem('cart'));
+    //  let index: number = -1;
+    //  for (var i = 0; i < cart.length; i++) {
+    //    let item: Item = JSON.parse(cart[i]);
+    //    if (item.product.productID == id) {
+    //      index = i;
+    //      break;
+    //    }
+    //  }
+    //  if (index == -1) {
+    //    cart.push(JSON.stringify(item));
+    //    localStorage.setItem('cart', JSON.stringify(cart));
+    //  } else {
+    //    let item: Item = JSON.parse(cart[index]);
+    //    item.quantity += 1;
+    //    cart[index] = JSON.stringify(item);
+    //    localStorage.setItem("cart", JSON.stringify(cart));
+    //  }
+    //}
+    //this.loadCart();
     return this.product;
    
   }
@@ -192,14 +197,17 @@ export class CartComponent implements OnInit {
     this.total = 0;
     this.items = [];
     let cart = JSON.parse(localStorage.getItem('cart'));
-    for (var i = 0; i < cart.length; i++) {
-      let item = JSON.parse(cart[i]);
-      this.items.push({
-        product: item.product,
-        quantity: item.quantity
-      });
-      this.total += item.product.price * item.quantity;
+    if (cart != null) {
+      for (var i = 0; i < cart.length; i++) {
+        let item = JSON.parse(cart[i]);
+        this.items.push({
+          product: item.product,
+          quantity: item.quantity
+        });
+        this.total += item.product.price * item.quantity;
+      }
     }
+ 
   }
 
   remove(id: number): void {
@@ -216,22 +224,46 @@ export class CartComponent implements OnInit {
     this.loadCart();
   }
 
-  add(id: number): void {
+  add(id: Number): void {
+    //let cart: any = JSON.parse(localStorage.getItem('cart'));
+    //let index: number = -1;
+    //for (var i = 0; i < cart.length; i++) {
+    //  let item: Item = JSON.parse(cart[i]);
+    //  if (item.product.productID == id) {
+    //    var newQuantity = item.quantity + 1;
+    //    //cart.splice(i, 1);
+    //    this.items.push({
+    //      product: item.product,
+    //      quantity: newQuantity
+    //    });
+    //    break;
+    //  }
+    //}
+    //localStorage.setItem("cart", JSON.stringify(cart));
+    //this.loadCart();   
+
     let cart: any = JSON.parse(localStorage.getItem('cart'));
+    if (cart != null) {   
     let index: number = -1;
-    for (var i = 0; i < cart.length; i++) {
-      let item: Item = JSON.parse(cart[i]);
-      if (item.product.productID == id) {
-        //cart.splice(i, 1);
-        this.items.push({
-          product: item.product,
-          quantity: item.quantity++
-        });
-        break;
+      for (var i = 0; i < cart.length; i++) {
+        let item: Item = JSON.parse(cart[i]);
+        if (item.product.productID == id) {
+          item.quantity += 1;
+          cart[i] = JSON.stringify(item);
+          localStorage.setItem("cart", JSON.stringify(cart));
+
+        }
       }
+
+      this.loadCart();
     }
-    localStorage.setItem("cart", JSON.stringify(cart));
-    this.loadCart();
+   
+
+
+
+
+
+    //this.getProductDetailsByID();
   }
 
 
@@ -256,6 +288,57 @@ export class CartComponent implements OnInit {
 //  }
 //})
 
+
+  getProductDetailsByID() {
+    let id = sessionStorage.getItem('id');
+    if (id!= "0" && id !=null) {
+      var d = this.getProductDetails(Number(id)).then();
+     
+    }
+
+  }
+
+
+  setProducts(id :Number) {
+    if (this.product) {
+      var item: Item = {
+
+        product: this.product,
+        quantity: 1
+      };
+
+
+      if (localStorage.getItem('cart') == null) {
+        let cart: any = [];
+        cart.push(JSON.stringify(item));
+        localStorage.setItem('cart', JSON.stringify(cart));
+      } else {
+        let cart: any = JSON.parse(localStorage.getItem('cart'));
+        let index: number = -1;
+        for (var i = 0; i < cart.length; i++) {
+          let item: Item = JSON.parse(cart[i]);
+          if (item.product.productID == id) {
+            index = i;
+            break;
+          }
+        
+      }
+        if (index == -1) {
+          cart.push(JSON.stringify(item));
+          localStorage.setItem('cart', JSON.stringify(cart));
+        } else {
+          let item: Item = JSON.parse(cart[index]);
+          item.quantity += 1;
+          cart[index] = JSON.stringify(item);
+          localStorage.setItem("cart", JSON.stringify(cart));
+        }
+
+        sessionStorage.setItem('id',"0");
+      }
+      this.loadCart();
+    }
+
+  }
 
 }
 

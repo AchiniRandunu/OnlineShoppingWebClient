@@ -30,7 +30,5 @@ export class NavMenuComponent implements OnInit {
     
   }
 
-  getProductsByCategory() {
 
-  }
 }

@@ -16,6 +16,7 @@ import { NavMenuComponent } from '../app/components/nav-menu/nav-menu.component'
 import { ProductComponent } from '../app/components/product/product.component';
 import { ProductDetailsComponent } from './components/product/product-details/product-details.component';
 import { CartComponent } from './components/cart/cart.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CartComponent } from './components/cart/cart.component';
     ToastrModule.forRoot({
       progressBar: true
     }),
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [UserService, {
     provide: HTTP_INTERCEPTORS,

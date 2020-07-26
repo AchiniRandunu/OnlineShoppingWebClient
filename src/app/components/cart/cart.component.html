@@ -1,16 +1,18 @@
 <h3>Shopping Cart </h3>
-<br />
 
-<table border="0" style="width:100%" >
-  <tr>
+
+<table border="0" style="width:100%">
+  <tr *ngIf="items">
 
     <!--<th>Id</th>-->
-    <th>Product</th>
+    <th>Item</th>
     <th>Image</th>
     <th>Price</th>
     <th>Quantity</th>
+    <th>Update Quantity</th>
     <th>Sub Total</th>
-    <!--<th>Remove Item</th>-->
+    <th>Remove</th>
+
   </tr>
   <tr *ngFor="let item of items">
 
@@ -21,17 +23,32 @@
     </td>
     <td>{{item.product.price}}</td>
     <td>{{item.quantity}}</td>
+    <td>
+      <a (click)="add(item.product.productID)">+-</a>
+    </td>
     <td>{{item.product.price * item.quantity}}</td>
     <td>
       <a (click)="remove(item.product.productID)">X</a>
     </td>
-    <td>
-      <a (click)="add(item.product.productID)">+-</a>
-    </td>
   </tr>
-  <tr>
-    <td colspan="4" align="right">Total Price : </td>
+  <tr *ngIf="items">
+    <td colspan="5" align="right">Total Price : </td>
     <td>{{total}}</td>
   </tr>
-
 </table>
+
+<div *ngIf="items">
+  <div>
+    <button mat-button class="btn btn-primary" width="100" padding="10px">
+      Checkout
+    </button>
+  </div>
+  <div>
+    <button mat-button class="btn btn-primary" width="100">
+      Cancel
+    </button>
+  </div>
+</div>
+
+
+

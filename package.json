@@ -21,6 +21,7 @@
     "@angular/router": "~8.1.0",
     "jwt-decode": "^2.2.0",
     "ngx-cookie-service": "^3.0.4",
+    "ngx-pagination": "^5.0.0",
     "ngx-toastr": "^9.1.1",
     "oidc-client": "^1.10.1",
     "rxjs": "~6.4.0",
