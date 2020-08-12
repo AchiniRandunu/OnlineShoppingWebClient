@@ -17,6 +17,9 @@ import { ProductComponent } from '../app/components/product/product.component';
 import { ProductDetailsComponent } from './components/product/product-details/product-details.component';
 import { CartComponent } from './components/cart/cart.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ViewOrderComponent } from './components/view-order/view-order.component';
+import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
     UserComponent,
     NavMenuComponent,  
     ProductComponent, ProductDetailsComponent,
-    CartComponent
+    CartComponent,
+    CheckoutComponent,
+    ViewOrderComponent,
+    OrderConfirmationComponent
   ],
   imports: [
     BrowserModule,

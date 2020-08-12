@@ -10,7 +10,7 @@
     </option>
   </select>
 </div>
-<div class="col_1" *ngFor="let product of ProductDetails | paginate: { itemsPerPage: 4, currentPage: p }">
+<div class="col_1" *ngFor="let product of productDetails | paginate: { itemsPerPage: 4, currentPage: p }">
   <div class="row value-item-wrapper align-items-center">
     <div class="col-12 col-sm-12 col-md-4">
       <div class="value-wrapper">
@@ -26,7 +26,7 @@
           <div class="txt">{{product.description}}</div>
         </div>
         <button mat-button class="btn btn-primary btn-custom mb-3 font-weight-bold btn-small btn-yellow"
-                (click)="addToCart(product.productID)">
+                (click)="addToCart(product.id)">
           Add To Cart
         </button>
       </div>

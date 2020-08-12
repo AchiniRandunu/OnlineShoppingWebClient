@@ -1,0 +1,133 @@
+<form [formGroup]="formModel" autocomplete="off" (submit)="onSubmit()">
+  <div class="row col-12">
+    <div class="container col-6">
+      <h3>Shipping Address</h3>
+      <div class="form-group reuired">
+        <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+        <input type="text" id="fname" formControlName="fullname" placeholder="John M. Doe">
+        <label class="text-danger" *ngIf="formModel.get('fullname').touched && formModel.get('fullname').errors?.required">
+          Full Name is mandatory.
+        </label>
+        
+      </div>
+      <div class="form-group required">
+        <label for="email"><i class="fa fa-envelope"></i> Email</label>
+        <input type="text" id="email" formControlName="email" placeholder="john@example.com">
+        <label class="text-danger" *ngIf="formModel.get('email').touched && formModel.get('email').errors?.required">
+          Email is mandatory.
+        </label>
+      </div>
+      <div class="form-group required">
+        <label for="adr"><i class="fa fa-phone"></i> Phone No</label>
+        <input type="text" id="phone" formControlName="phone" placeholder="0771234567" maxlength="10">
+        <label class="text-danger" *ngIf="formModel.get('phone').touched && formModel.get('phone').errors?.required">
+          Phone Number is mandatory.
+        </label>
+      </div>
+      <div class="form-group required">
+        <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+        <input type="text" id="adr" formControlName="address" placeholder="542 W. 15th Street">
+        <label class="text-danger" *ngIf="formModel.get('address').touched && formModel.get('address').errors?.required">
+          Address is mandatory.
+        </label>
+      </div>
+      <div class="form-group required">
+        <label for="city"><i class="fa fa-institution"></i> City</label>
+        <input type="text" id="city" formControlName="city" placeholder="New York">
+        <label class="text-danger" *ngIf="formModel.get('city').touched && formModel.get('city').errors?.required">
+          City is mandatory.
+        </label>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group required">
+            <label for="state">State</label>
+            <input type="text" id="state" formControlName="state" placeholder="NY">
+            <label class="text-danger" *ngIf="formModel.get('state').touched && formModel.get('state').errors?.required">
+              State is mandatory.
+            </label>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="form-group required">
+            <label for="zip">Zip Code</label>
+            <input type="text" id="zip" formControlName="zip" placeholder="10001">
+            <label class="text-danger" *ngIf="formModel.get('zip').touched && formModel.get('zip').errors?.required">
+              Zip Code is mandatory.
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group required">
+        <label for="city"><i class="fa fa-shopping-bag"></i>Shipping Method</label>
+        <input type="text" id="shipMethod" formControlName="shipMethod" placeholder="UPS,USPS,Fedex">
+        <label class="text-danger" *ngIf="formModel.get('shipMethod').touched && formModel.get('shipMethod').errors?.required">
+         Shipping Method is mandatory.
+        </label>
+      </div>
+      </div>
+    <div class=" container col-5">
+      <h3>Payment</h3>
+      <div class="form-group required">
+        <label for="fname">Accepted Cards</label>
+        <div class="icon-container">
+          <i class="fa fa-cc-visa" style="color:navy;"></i>
+          <i class="fa fa-cc-amex" style="color:blue;"></i>
+          <i class="fa fa-cc-mastercard" style="color:red;"></i>
+          <i class="fa fa-cc-discover" style="color:orange;"></i>
+        </div>
+      </div>
+      <div class="form-group required">
+        <label for="cname">Name on Card</label>
+        <input type="text" id="cname" formControlName="cardname" placeholder="John More Doe">
+        <label class="text-danger" *ngIf="formModel.get('cardname').touched && formModel.get('cardname').errors?.required">
+          Name on Card is mandatory.
+        </label>
+      </div>
+      <div class="form-group required">
+        <label for="ccnum">Credit card number</label>
+        <input type="text" id="ccnum" formControlName="cardnumber" placeholder="1111-2222-3333-4444">
+        <label class="text-danger" *ngIf="formModel.get('cardnumber').touched && formModel.get('cardnumber').errors?.required">
+          Card Number is mandatory.
+        </label>
+      </div>
+      <div class="form-group required">
+        <label for="expmonth">Expiration Month</label>
+        <input type="text" id="expmonth" formControlName="expmonth" placeholder="September">
+        <label class="text-danger" *ngIf="formModel.get('expmonth').touched && formModel.get('expmonth').errors?.required">
+          Expiration Month is mandatory.
+        </label>
+      </div>
+      <div class="row">      
+        <div class="col-6">
+          <div class="form-group required">
+            <label for="expyear">Exp Year</label>
+            <input type="text" id="expyear" formControlName="expyear" placeholder="2018">
+            <label class="text-danger" *ngIf="formModel.get('expyear').touched && formModel.get('expyear').errors?.required">
+              Expiration Year is mandatory.
+            </label>
+          </div>
+          </div>
+
+        <div class="col-6">
+          <div class="form-group required">
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" formControlName="cvv" placeholder="352">
+            <label class="text-danger" *ngIf="formModel.get('cvv').touched && formModel.get('cvv').errors?.required">
+              CVV is mandatory.
+            </label>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="row col-12">
+    <label>
+      <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+    </label>
+    <input type="submit" value="Continue to checkout" class="btn" [routerLink]='["/view-order"]'
+           (click)="checkout()" > <!--[disabled]="!formModel.valid"-->>
+  </div>
+</form>

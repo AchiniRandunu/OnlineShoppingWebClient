@@ -2,11 +2,8 @@ import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { User } from '../../components/user/model/user';
-import { Constants } from '../../shared/constants';
+import { environment } from '../../../environments/environment.prod';
 import { BehaviorSubject } from 'rxjs';
-//import { LoggerService } from '../logger/logger.service';
-//import { LogLevel } from '../../../shared/utilities/enum';
-//import { LocalStorageService } from './cache/local-storage.service';
 import { Router } from '@angular/router';
 import * as jwt_decode from "jwt-decode";
 
@@ -16,7 +13,7 @@ import * as jwt_decode from "jwt-decode";
   providedIn: 'root'
 })
 export class UserService {
-  // private _currentUser: User; 
+ 
   private currentUserSubject: BehaviorSubject<User> = new BehaviorSubject(new User());
 
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router,
@@ -24,9 +21,13 @@ export class UserService {
     
   
   }
-  readonly BaseURI = 'http://localhost:31258/api';
+  readonly baseURI = `${environment.apiHost}`;
+  readonly loginUrl = `${environment.loginUrl}`;
+  readonly registerUrl = `${environment.registerUrl}`;
+  readonly userProfileUrl = `${environment.userProfileUrl}`;
+
   private loginStatus = new BehaviorSubject<boolean>(this.checkLoginStatus());
-  private UserName = new BehaviorSubject<string>(sessionStorage.getItem('UserName'));
+  private userName = new BehaviorSubject<string>(sessionStorage.getItem('UserName'));
 
 
   formModel = this.fb.group({
@@ -59,22 +60,23 @@ export class UserService {
       FullName: this.formModel.value.FullName,
       Password: this.formModel.value.Passwords.Password
     };
-    return this.http.post(this.BaseURI + '/ApplicationUser/Register', body);
+    return this.http.post(this.baseURI + this.registerUrl, body);
   }
 
   login(formData) {
-    return this.http.post(this.BaseURI + '/ApplicationUser/Login', formData);
+    return this.http.post(this.baseURI + this.loginUrl, formData);
 
   }
 
   getUserProfile() {
-    return this.http.get(this.BaseURI + '/UserProfile');
+    return this.http.get(this.baseURI + this.userProfileUrl);
   }
 
   onLogout() {
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('UserName');
     sessionStorage.setItem('loginStatus', '0');
+    sessionStorage.removeItem('cart');
     location.reload();
     this.router.navigate(['/user/login']);   
 
@@ -110,8 +112,8 @@ export class UserService {
         return true;
       }
 
-      console.log("NEW DATE " + new Date().valueOf());
-      console.log("Token DATE " + tokenExpDate.valueOf());
+      //console.log("NEW DATE " + new Date().valueOf());
+      //console.log("Token DATE " + tokenExpDate.valueOf());
 
       return false;
 
@@ -124,11 +126,11 @@ export class UserService {
   }
 
   get currentUserName() {
-    return this.UserName.asObservable();
+    return this.userName.asObservable();
   }
 
   getUserName() {
-    this.UserName.next(sessionStorage.getItem('UserName'));
+    this.userName.next(sessionStorage.getItem('UserName'));
   
   }
 }

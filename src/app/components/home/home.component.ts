@@ -6,26 +6,6 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styles: []
 })
-export class HomeComponent  {
-  //userDetails;
+export class HomeComponent  { 
 
-  //constructor(private router: Router, private service: UserService) { }
-
-  //ngOnInit() {
-  //  this.service.getUserProfile().subscribe(
-  //    res => {
-  //      this.userDetails = res;
-  //      console.log(this.userDetails);
-  //    },
-  //    err => {
-  //      console.log(err);
-  //    },
-  //  );
-  //}
-
-
-  //onLogout() {
-  //  localStorage.removeItem('token');
-  //  this.router.navigate(['/user/login']);
-  //}
 }

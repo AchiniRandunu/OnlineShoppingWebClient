@@ -15,12 +15,12 @@ export class NavMenuComponent implements OnInit {
 
   }
 
-  LoginStatus$: Observable<boolean>;
-  UserName$: Observable<string>;
+  loginStatus$: Observable<boolean>;
+  userName$: Observable<string>;
 
   ngOnInit() {
-    this.LoginStatus$ = this.userService.isLoggesIn;
-    this.UserName$ = this.userService.currentUserName;
+    this.loginStatus$ = this.userService.isLoggesIn;
+    this.userName$ = this.userService.currentUserName;
 
   }
 

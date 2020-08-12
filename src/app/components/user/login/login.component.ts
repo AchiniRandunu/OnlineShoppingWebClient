@@ -37,9 +37,12 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('UserName', res.userName);
           sessionStorage.setItem('loginStatus', '1');
           this.service.getUserName();
+          if (this.formModel.UserName)
+            sessionStorage.setItem('UserNameForID', this.formModel.UserName);
           this.toastr.success('Logged in Successfully.');   
           location.reload();
           this.router.navigateByUrl('/home');
+          
         }
         
       },

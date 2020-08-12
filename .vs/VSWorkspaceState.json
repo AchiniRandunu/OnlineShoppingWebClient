@@ -4,13 +4,13 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\components",
-    "\\src\\app\\components\\auth",
-    "\\src\\app\\components\\nav-menu",
+    "\\src\\app\\components\\checkout",
+    "\\src\\app\\services",
+    "\\src\\app\\services\\data-access",
+    "\\src\\app\\services\\user-authentication",
     "\\src\\app\\shared",
-    "\\src\\app\\shared\\services",
-    "\\src\\assets",
-    "\\src\\assets\\img"
+    "\\src\\app\\shared\\services"
   ],
-  "SelectedNode": "\\src\\app\\components\\cart\\cart.component.ts",
+  "SelectedNode": "\\src\\app\\services\\online-shopping-management.service.ts",
   "PreviewInSolutionExplorer": false
 }

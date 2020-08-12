@@ -12,8 +12,8 @@ import { Router } from '@angular/router';
 export class ProductComponent implements OnInit {
 
   userId: Number;
-  AllProductDetails = [];
-  ProductDetails = [];
+  allProductDetails = [];
+  productDetails = []; //change 
 
 
 
@@ -36,9 +36,9 @@ export class ProductComponent implements OnInit {
       .getProductDetails();
     if (response != null && response.data != null) {
       console.log(response);
-      this.AllProductDetails = response.data;
-      this.ProductDetails = this.AllProductDetails;
-      console.log(this.ProductDetails);
+      this.allProductDetails = response.data;
+      this.productDetails = this.allProductDetails;
+      
     }
 
 
@@ -47,34 +47,35 @@ export class ProductComponent implements OnInit {
   //Get Product Details relevant to thecategory
   public getProductsByCategory(type) {
 
-    let CategoryProductDetails = [];
+    let categoryProductDetails = [];
+   // let categoryTwoProductDetails = [];
     switch (type) {
       case "0":
 
-        this.ProductDetails = [];
-        this.ProductDetails = this.AllProductDetails;
+        this.productDetails = [];
+        this.productDetails = this.allProductDetails;
         break;
 
       case "1":
-        this.ProductDetails = [];
-        this.AllProductDetails.forEach(function (value) {
+        this.productDetails = [];
+        this.allProductDetails.forEach(function (value) {
           if (value.categoryID.toString() == "1") {
-            CategoryProductDetails.push(value);
+            categoryProductDetails.push(value);
           }
         });
 
-        this.ProductDetails = CategoryProductDetails;
+        this.productDetails = categoryProductDetails;
         break;
 
       case "2":
-        this.ProductDetails = [];
-        this.AllProductDetails.forEach(function (value) {
+        this.productDetails = [];
+        this.allProductDetails.forEach(function (value) {
           if (value.categoryID.toString() == "2") {
-            CategoryProductDetails.push(value);
+            categoryProductDetails.push(value);
           }
         });
 
-        this.ProductDetails = CategoryProductDetails;
+        this.productDetails = categoryProductDetails;
         break;
 
     }
