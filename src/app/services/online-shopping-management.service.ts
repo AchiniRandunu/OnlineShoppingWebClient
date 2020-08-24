@@ -78,6 +78,15 @@ getProductDetailsNew(): Observable<any> {
     );
   }
 
+  sendEmail(fromBody): Observable<any> {
+
+    const url = `${environment.apiHost}${environment.sendEmailUrl}`;
+    return this.http.post<any>(url, fromBody).pipe(
+      tap(_ => console.log(`completed send email`)),
+      catchError(this.handleError<any>(`Failed to send email`))
+    );
+  }
+
 }
 
 

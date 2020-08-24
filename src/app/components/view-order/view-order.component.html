@@ -1,0 +1,89 @@
+<div class="card">  
+  <div class="card-body">   
+    <div class="row">
+      <div class="col-md-9">      
+      <div class="col-md-6">
+        <div class="right border">
+          <h2>Order Summary</h2>
+          <p>{{orderLineItems.length}} items</p>
+       
+          <div class="row item" *ngFor="let item of orderLineItems">
+            <div class="col-4 align-self-center"><img class="img-fluid" src="../../../../assets/img/{{item.imageName}}"></div>
+            <div class="col-8">
+              <div class="row"><b>${{item.price}}</b></div>
+              <div class="row text-muted">{{item.productName}}</div>
+              <div class="row">Qty: {{item.quantity}}</div>
+            </div>
+          </div>  
+          <hr>
+          <div class="row lower">
+            <div class="col text-left">Subtotal</div>
+            <div class="col text-right">$ {{total}}</div>
+          </div>
+          <div class="row lower">
+            <div class="col text-left">Delivery</div>
+            <div class="col text-right">Free</div>
+          </div>
+          <div class="row lower">
+            <div class="col text-left">Tax</div>
+            <div class="col text-right">Free</div>
+          </div>
+          <div class="row lower">
+            <div class="col text-left"><b>Total to pay</b></div>
+            <div class="col text-right"><b>$ {{total}}</b></div>
+          </div>
+          <button class="btn" [routerLink]='["/order-confirmation"]' (click)="sendEmail()">Place Order</button>        
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div> </div>
+</div>
+</div>
+
+<ng-template #billTemplate hidden="hidden">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="col-md-6">
+            <div class="right border">
+              <h2>Order Summary</h2>
+              <p>{{orderLineItems.length}} items</p>
+
+              <div class="row item" *ngFor="let item of orderLineItems">            
+                <div class="col-8">
+                  <div class="row"><b>${{item.price}}</b></div>
+                  <div class="row text-muted">{{item.productName}}</div>
+                  <div class="row">Qty: {{item.quantity}}</div>
+                </div>
+              </div>
+              <hr>
+              <div class="row lower">
+                <div class="col text-left">Subtotal</div>
+                <div class="col text-right">$ {{total}}</div>
+              </div>
+              <div class="row lower">
+                <div class="col text-left">Delivery</div>
+                <div class="col text-right">Free</div>
+              </div>
+              <div class="row lower">
+                <div class="col text-left">Tax</div>
+                <div class="col text-right">Free</div>
+              </div>
+              <div class="row lower">
+                <div class="col text-left"><b>Total to pay</b></div>
+                <div class="col text-right"><b>$ {{total}}</b></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div> </div>
+    </div>
+  </div>
+
+</ng-template>
+
+

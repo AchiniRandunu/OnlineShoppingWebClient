@@ -6,7 +6,8 @@ export const environment = {
   getProductUrl: '/Products/GetAllActiveProducts',
   getProductByIDUrl: '/Products/GetProductById',
   userProfileUrl: '/UserProfile',
-  saveOrderUrl : '/checkout/SaveOrder'
+  saveOrderUrl: '/checkout/SaveOrder',
+  sendEmailUrl:'/Email/SendEmail'
 };
 
 

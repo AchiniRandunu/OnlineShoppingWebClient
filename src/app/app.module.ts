@@ -20,6 +20,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ViewOrderComponent } from './components/view-order/view-order.component';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
+import { EmailSendingComponent } from './components/email-sending/email-sending.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { OrderConfirmationComponent } from './components/order-confirmation/orde
     CartComponent,
     CheckoutComponent,
     ViewOrderComponent,
-    OrderConfirmationComponent
+    OrderConfirmationComponent,
+    EmailSendingComponent
   ],
   imports: [
     BrowserModule,

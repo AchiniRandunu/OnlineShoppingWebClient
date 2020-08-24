@@ -80,7 +80,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     };
 
     this.checkoutSub = this.onlineShoppingManagementService.saveOrder(body).subscribe(data => {
-      console.log(data.data);
+      
       if (data.data != "Failed") {
         this.toastr.success('Alert', 'Order is Placed Successfully.');
         this.formModel.reset();
@@ -91,6 +91,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       }      
      
     });
+
+    sessionStorage.setItem('Email', body.Email);
   
   }
 
