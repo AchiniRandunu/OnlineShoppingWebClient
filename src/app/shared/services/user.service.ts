@@ -77,6 +77,9 @@ export class UserService {
     sessionStorage.removeItem('UserName');
     sessionStorage.setItem('loginStatus', '0');
     sessionStorage.removeItem('cart');
+    sessionStorage.removeItem('UserNameForID');
+    sessionStorage.removeItem('Email');
+    sessionStorage.removeItem('id');
     location.reload();
     this.router.navigate(['/user/login']);   
 

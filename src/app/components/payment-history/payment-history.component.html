@@ -1,0 +1,26 @@
+<h3>Payment History </h3>
+
+
+<table border="1" style="width:100%" align="center">
+  <tr align="center">
+
+    <th>Payment ID</th>
+    <th>OrderID</th>
+    <th>TotalPrice</th>
+    <th>PaidDate</th>
+    <th>Description</th>  
+    <th>PaymentMethod</th>
+
+  </tr>
+  <tr *ngFor="let payment of paymentDetails" align="center">
+
+    <td>{{payment.id}}</td>
+    <td>{{payment.orderID}}</td>
+    <td>{{payment.totalPrice}}</td>
+    <td>{{payment.paidDate}}</td>
+    <td>{{payment.description}}</td>
+    <td>{{payment.paymentMethod}}</td>
+
+  </tr>
+
+</table>

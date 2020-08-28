@@ -87,6 +87,15 @@ getProductDetailsNew(): Observable<any> {
     );
   }
 
+
+  getPaymentByUser(userName: string): Observable<any> {
+
+    const url = `${environment.apiHost}${environment.getPaymentByUser}/${userName}`;
+    return this.http.get<any>(url).pipe(
+      tap(_ => console.log(`fetched user name=${userName}`)),
+      catchError(this.handleError<any>(`getUserName=${userName}`))
+    );
+  }
 }
 
 

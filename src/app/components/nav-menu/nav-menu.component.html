@@ -32,10 +32,15 @@
           <li class="nav-item" *ngIf="(loginStatus$ | async) as LoginStatus">
             <a class="nav-link text-dark" [routerLink]='["/cart"]' *ngIf="LoginStatus">
               <i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i>
-            </a>            
+            </a>
           </li>
           <li class="nav-item" *ngIf="(loginStatus$ | async) as LoginStatus">
             <a class="nav-link text-dark" *ngIf="(userName$ | async) as UserName">Hi {{UserName}} </a>
+          </li>
+          <li class="nav-item" *ngIf="(loginStatus$ | async) as LoginStatus">
+            <a class="nav-link text-dark" [routerLink]='["/payment-history"]' *ngIf="LoginStatus">
+              <i class="fa fa-credit-card fa-1x" aria-hidden="true"></i>
+            </a>
           </li>
           <li class="nav-item" *ngIf="(loginStatus$ | async) as LoginStatus">
             <a class="nav-link text-dark" (click)="onLogout()" *ngIf="LoginStatus">Logout</a>

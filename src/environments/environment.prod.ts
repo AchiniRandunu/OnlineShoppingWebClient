@@ -7,7 +7,8 @@ export const environment = {
   getProductByIDUrl: '/Products/GetProductById',
   userProfileUrl: '/UserProfile',
   saveOrderUrl: '/checkout/SaveOrder',
-  sendEmailUrl:'/Email/SendEmail'
+  sendEmailUrl: '/Email/SendEmail',
+  getPaymentByUser:'/Payment/GetPaymentByUser'
 };
 
 
