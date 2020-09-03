@@ -31,10 +31,10 @@ export class PaymentHistoryComponent implements OnInit {
       (sessionStorage.getItem('UserNameForID')).subscribe(data => {
         if (data.data != null) {
           this.paymentDetails = data.data;
-          this.toastr.success('Alert', 'Payment details got Successfully.');
+          this.toastr.success('Payment details got Successfully.');
         }
         else
-          this.toastr.success('Alert', 'Payment details not get Successfully.');
+          this.toastr.success('Payment details not get Successfully.');
     });
 
   }

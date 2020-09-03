@@ -13,7 +13,7 @@ export class ProductComponent implements OnInit {
 
   userId: Number;
   allProductDetails = [];
-  productDetails = []; //change 
+  productDetails = []; 
 
 
 
