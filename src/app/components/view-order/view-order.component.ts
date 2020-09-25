@@ -31,9 +31,7 @@ export class ViewOrderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getCartItems();
-    //console.log(this.billTemplate);
-    this.getHtmlContent();
+    this.getCartItems();   
   }
 
   getCartItems() {
@@ -54,9 +52,8 @@ export class ViewOrderComponent implements OnInit {
     this.getCartProductDetails();
   }
 
-  getCartProductDetails() {
- 
-    //this.orderItems = [];
+  getCartProductDetails() { 
+    
     let orderItems: Product[] = [];
     this.items.forEach(function (value) {
       
@@ -83,13 +80,10 @@ export class ViewOrderComponent implements OnInit {
       ToEmail: sessionStorage.getItem('Email'),
       Subject: "Bill Summary",
       BodyProducts: this.orderLineItems,
-      Attachments: ''     
+      Attachments: '',
+      UserName: sessionStorage.getItem('UserNameForID')
 
-    };
-
-
-
-        //public List < IFormFile > Attachments { get; set; }
+    };      
 
     this.sendEmailSub = this.onlineShoppingManagementService.sendEmail(body).subscribe(data => {
 
@@ -105,12 +99,6 @@ export class ViewOrderComponent implements OnInit {
     });
   }
 
-  getHtmlContent() {
-    //This will return '<p> Text </p>' as a string
-    console.log(this.elRef.nativeElement);
-    return this.elRef.nativeElement.innerHTML;
-    
-  }
 }
 
 

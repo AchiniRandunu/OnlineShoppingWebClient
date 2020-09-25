@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiHost: 'http://localhost:31258/api',
+  apiHost: 'http://onlineshoppingservice.com:80/api',
   loginUrl: '/ApplicationUser/Login',
   registerUrl: '/ApplicationUser/Register',
   getProductUrl: '/Products/GetAllActiveProducts',

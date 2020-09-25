@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
-body {
+/*body {
   background-color: #fff;  
   
-}
+}*/
 
 input.form-control, input.form-control:focus {
   background-color: #636b7b;
@@ -98,4 +98,16 @@ div.form-group label:first-child {
   text-transform: uppercase;
   font-size: 0.9rem;
 }
+.card {
+  max-width: 1000px;
+  margin: 2vh
+}
 
+.card-body {
+  padding: 0 5rem 5rem 5rem;
+  background-image: url("/assets/img/home.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 550px;
+  width: 1200px;
+}
